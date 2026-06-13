@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        body { font-family: 'Arial', sans-serif; background: #ccc; display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        
+        .passport {
+            width: 100%; max-width: 500px; 
+            background-color: white;
+            background-image: url('https://i.postimg.cc/PxpYBr8H/2db2994c-447a-4c8a-9f2e-c939ae72254f.jpg');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            padding: 20px;
+            border: 1px solid #000; position: relative; box-sizing: border-box;
+            color: black;
+        }
+
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 10px; }
+        .header h2 { margin: 0; font-size: 18px; color: #004a99; }
+        .header p { margin: 0; font-size: 12px; font-weight: bold; }
+        
+        .layout { display: grid; grid-template-columns: 120px 1fr; gap: 15px; }
+        
+        /* Area Foto */
+        .photo-area { width: 120px; height: 150px; border: 1px solid #000; cursor: pointer; position: relative; overflow: hidden; background: #eee; }
+        #imgPreview { width: 100%; height: 100%; object-fit: cover; display: block;}
+        
+        .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+        .field { margin-bottom: 0px; }
+        .label { font-size: 8px; color: #444; text-transform: uppercase; }
+        .value { font-size: 12px; font-weight: bold; text-transform: uppercase; outline: 1px dashed transparent; color: black; }
+        .value:focus { outline: 1px dashed #999; background: rgba(255, 253, 231, 0.7); }
+
+        .mrz { margin-top: 15px; font-family: 'Courier New', monospace; font-size: 10px; background: rgba(238, 238, 238, 0.8); padding: 5px; border-top: 1px dashed #000; color: black; }
+        
+        .controls { margin-top: 20px; display: flex; gap: 10px; }
+        .btn {font-size:12px; padding: 10px 20px; cursor: pointer; color: white; border: none; font-weight: bold; }
+        .btn-download { background: #004a99; }
+        .btn-upload { background: #555; }
+    </style>
+</head>
+<body>
+
+<div class="passport" id="capture">
+    <div class="header">
+        <h2>REPUBLIK INDONESIA</h2>
+        <p>PASPOR / PASSPORT</p>
+    </div>
+    
+    <div class="layout">
+        <label class="photo-area">
+            <input type="file" id="fileInput" style="display:none" accept="image/*">
+            <img id="imgPreview" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Upload Foto">
+        </label>
+        
+        <div class="data-grid">
+            <div class="field"><div class="label">Type/Tipe</div><div class="value" contenteditable="true">P</div></div>
+            <div class="field"><div class="label">Country Code</div><div class="value" contenteditable="true">IDN</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Surname</div><div class="value" contenteditable="true">DEVI NA</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Given Names</div><div class="value" contenteditable="true">DEVI NA</div></div>
+            <div class="field"><div class="label">Sex</div><div class="value" contenteditable="true">P / F</div></div>
+            <div class="field"><div class="label">Passport No.</div><div class="value" contenteditable="true">P1159566</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Date of Birth</div><div class="value" contenteditable="true">29 SEP 1990</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Place of Birth</div><div class="value" contenteditable="true">TULUNGAGUNG</div></div>
+        </div>
+    </div>
+
+    <div class="mrz" contenteditable="true">
+        P&lt;IDNNA&lt;&lt;DEVI&lt;NA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+        P1159566&lt;0IDN9009299F2610015&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;0
+    </div>
+</div>
+
+<div class="controls">
+    <label class="btn btn-upload">
+        Ganti Latar Belakang
+        <input type="file" id="bgFileInput" style="display:none" accept="image/*">
+    </label>
+    <button class="btn btn-download" onclick="downloadPassport()">Download Sebagai Gambar</button>
+</div>
+
+<script>
+    document.getElementById('fileInput').onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) { document.getElementById('imgPreview').src = URL.createObjectURL(file); }
+    };
+
+    document.getElementById('bgFileInput').onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) { document.getElementById('capture').style.backgroundImage = `url(${event.target.result})`; };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    function downloadPassport() {
+        html2canvas(document.getElementById("capture"), { scale: 2, useCORS: true }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'passport_edit.png';
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        });
+    }
+</script>
+
+</body>
+</html>
