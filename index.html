@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        body { font-family: 'Arial', sans-serif; background: #ccc; display: flex; flex-direction: column; align-items: center; padding: 10px; }
+        body { font-family: 'Arial', sans-serif; background: #ccc; display: flex; flex-direction: column;  padding: 10px; }
         
         .passport {
-            width: 100%; max-width: 500px; 
+            width: 100%; max-width: 330px; 
             background-color: white;
             background-image: url('https://i.postimg.cc/PxpYBr8H/2db2994c-447a-4c8a-9f2e-c939ae72254f.jpg');
             background-size: cover; 
@@ -34,9 +34,16 @@
         .value { font-size: 12px; font-weight: bold; text-transform: uppercase; outline: 1px dashed transparent; color: black; }
         .value:focus { outline: 1px dashed #999; background: rgba(255, 253, 231, 0.7); }
 
-        .mrz { margin-top: 10px; font-family: 'Courier New', monospace; font-size: 10px; background: rgba(238, 238, 238, 0.8); padding: 5px; border-top: 1px dashed #000; color: black; }
+        .mrz { margin-top: 0px; font-family: 'Courier New', monospace; font-size: 10px; background: rgba(238, 238, 238, 0.8); padding: 5px; border-top: 1px dashed #000; color: black; }
         
-        .controls { widht:100%; margin-top: 10px; display: flex; gap: 15px; }
+          .controls {
+              width: 100%;
+              margin-top: 10px;
+              display: flex;
+              gap: 15px;
+              justify-content: flex-start; 
+              align-items: center;  
+          }
         .btn { border-radius:10px; font-size:12px; padding: 10px 10px; cursor: pointer; color: white; border: none; font-weight: bold; }
         .btn-download { background: #004a99; }
         .btn-upload { background: #555; }
@@ -76,10 +83,10 @@
 
 <div class="controls">
     <label class="btn btn-upload">
-        Ganti Latar Belakang
+        Ganti Latar belakang
         <input type="file" id="bgFileInput" style="display:none" accept="image/*">
     </label>
-    <button class="btn btn-download" onclick="downloadPassport()">Download Sebagai Gambar</button>
+    <button class="btn btn-download" onclick="downloadPassport()">Download Gambar</button>
 </div>
 
 <script>
