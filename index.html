@@ -34,10 +34,10 @@
         .value { font-size: 12px; font-weight: bold; text-transform: uppercase; outline: 1px dashed transparent; color: black; }
         .value:focus { outline: 1px dashed #999; background: rgba(255, 253, 231, 0.7); }
 
-        .mrz { margin-top: 15px; font-family: 'Courier New', monospace; font-size: 10px; background: rgba(238, 238, 238, 0.8); padding: 5px; border-top: 1px dashed #000; color: black; }
+        .mrz { margin-top: 10px; font-family: 'Courier New', monospace; font-size: 10px; background: rgba(238, 238, 238, 0.8); padding: 5px; border-top: 1px dashed #000; color: black; }
         
-        .controls { margin-top: 20px; display: flex; gap: 10px; }
-        .btn {font-size:12px; padding: 10px 20px; cursor: pointer; color: white; border: none; font-weight: bold; }
+        .controls { widht:100%; margin-top: 10px; display: flex; gap: 15px; }
+        .btn { border-radius:10px; font-size:12px; padding: 10px 10px; cursor: pointer; color: white; border: none; font-weight: bold; }
         .btn-download { background: #004a99; }
         .btn-upload { background: #555; }
     </style>
@@ -59,17 +59,17 @@
         <div class="data-grid">
             <div class="field"><div class="label">Type/Tipe</div><div class="value" contenteditable="true">P</div></div>
             <div class="field"><div class="label">Country Code</div><div class="value" contenteditable="true">IDN</div></div>
-            <div class="field" style="grid-column: span 2;"><div class="label">Surname</div><div class="value" contenteditable="true">DEVI NA</div></div>
-            <div class="field" style="grid-column: span 2;"><div class="label">Given Names</div><div class="value" contenteditable="true">DEVI NA</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Surname</div><div class="value" contenteditable="true">NAMA</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Given Names</div><div class="value" contenteditable="true">NAMA</div></div>
             <div class="field"><div class="label">Sex</div><div class="value" contenteditable="true">P / F</div></div>
             <div class="field"><div class="label">Passport No.</div><div class="value" contenteditable="true">P1159566</div></div>
             <div class="field" style="grid-column: span 2;"><div class="label">Date of Birth</div><div class="value" contenteditable="true">29 SEP 1990</div></div>
-            <div class="field" style="grid-column: span 2;"><div class="label">Place of Birth</div><div class="value" contenteditable="true">TULUNGAGUNG</div></div>
+            <div class="field" style="grid-column: span 2;"><div class="label">Place of Birth</div><div class="value" contenteditable="true">ALAMAT</div></div>
         </div>
     </div>
 
     <div class="mrz" contenteditable="true">
-        P&lt;IDNNA&lt;&lt;DEVI&lt;NA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
+        P&lt;IDNNA&lt;&lt;DEV&lt;NA&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;<br>
         P1159566&lt;0IDN9009299F2610015&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;0
     </div>
 </div>
